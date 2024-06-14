@@ -1,5 +1,22 @@
 package with_slice
 
+// 使用map的key惟一性进行删除
+func RemoveDuplicats(input []int) []int {
+
+	encountered := map[int]bool{}
+	result := []int{}
+
+	for _, v := range input {
+		if !encountered[v] {
+			encountered[v] = true
+			result = append(result, v)
+		}
+	}
+
+	return result
+
+}
+
 // 删除元素，使用append()实现, append()会重新分配内存
 // 每删除一个元素，后面元素会进行多次移动
 func RemoveValue(ss []int, value int) []int {
@@ -12,7 +29,7 @@ func RemoveValue(ss []int, value int) []int {
 	return ss
 }
 
-//删除元素，每次只移动一个元素
+// 删除元素，每次只移动一个元素
 func RemoveValuePerf(ss []int, value int) []int {
 
 	j := 0
